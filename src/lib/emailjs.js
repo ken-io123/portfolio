@@ -2,11 +2,10 @@ import emailjs from '@emailjs/browser';
 
 // EmailJS Configuration
 // Sign up at https://www.emailjs.com/ and get your credentials
-// Add them to your .env file (never commit .env to git!)
 export const EMAILJS_CONFIG = {
-  SERVICE_ID: import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
-  TEMPLATE_ID: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
-  PUBLIC_KEY: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY',
+  SERVICE_ID: 'YOUR_SERVICE_ID', // Replace with your EmailJS Service ID
+  TEMPLATE_ID: 'YOUR_TEMPLATE_ID', // Replace with your EmailJS Template ID
+  PUBLIC_KEY: 'YOUR_PUBLIC_KEY', // Replace with your EmailJS Public Key
 };
 
 /**
@@ -40,4 +39,3 @@ export const sendEmail = async (formData) => {
 export const initEmailJS = () => {
   emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
 };
-

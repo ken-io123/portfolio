@@ -30,7 +30,7 @@ const Footer = () => {
             {/* Brand */}
             <div>
               <h3 className="text-2xl font-bold text-foreground mb-4">
-                Ken.
+                KENRICK.
               </h3>
               <p className="text-muted text-sm max-w-xs">
                 Creating captivating wonders through art and design. Turning
@@ -87,7 +87,7 @@ const Footer = () => {
           <div className="pt-8 border-t border-slate-200 dark:border-slate-700">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-muted text-sm">
-                © {currentYear} Ken. All rights reserved.
+                © {currentYear} KENRICK. All rights reserved.
               </p>
               <div className="flex gap-6 text-sm">
                 <a

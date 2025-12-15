@@ -56,7 +56,7 @@ const Navbar = () => {
             href="#"
             className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
           >
-            Ken.
+            KENRICK.
           </a>
 
           {/* Desktop Navigation */}
