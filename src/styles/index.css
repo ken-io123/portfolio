@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for Theme Colors */
+:root {
+  /* Light mode colors */
+  --color-bg: 248 250 252;          /* slate-50 */
+  --color-text: 30 41 59;           /* slate-800 */
+  --color-text-muted: 100 116 139;  /* slate-500 */
+  --color-primary: 124 58 237;      /* violet-600 */
+  --color-primary-dark: 109 40 217; /* violet-700 */
+}
+
+.dark {
+  /* Dark mode colors */
+  --color-bg: 15 23 42;             /* slate-900 */
+  --color-text: 248 250 252;        /* slate-50 */
+  --color-text-muted: 148 163 184;  /* slate-400 */
+}
+
+/* Base Styles */
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans;
+    @apply antialiased;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  /* Smooth transitions for theme changes */
+  * {
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  }
+}
+
+/* Custom Component Styles */
+@layer components {
+  /* Button variants */
+  .btn-primary {
+    @apply px-6 py-3 bg-primary text-white rounded-full font-medium;
+    @apply hover:bg-primary-dark transition-all duration-300;
+    @apply shadow-lg shadow-violet-500/20 hover:shadow-xl hover:shadow-violet-500/30;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-transparent border-2 border-foreground text-foreground rounded-full font-medium;
+    @apply hover:bg-foreground hover:text-background transition-all duration-300;
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+
+  /* Gradient backgrounds */
+  .hero-gradient {
+    background: linear-gradient(135deg, #f3f4f6 0%, #e0e7ff 25%, #ddd6fe 50%, #e0e7ff 75%, #f3f4f6 100%);
+  }
+
+  .dark .hero-gradient {
+    background: linear-gradient(135deg, #0f0a1f 0%, #1e1b4b 30%, #2d1b69 50%, #3730a3 70%, #1e1b4b 100%);
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
+  }
+
+  /* Floating animation badge */
+  .floating-badge {
+    @apply absolute px-4 py-2 bg-white dark:bg-slate-800 rounded-full shadow-lg;
+    @apply flex items-center gap-2 text-sm font-medium;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-blue-600;
+  }
+
+  /* Hide scrollbar but allow scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
