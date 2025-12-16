@@ -118,14 +118,14 @@ const Hero = () => {
       id: 2,
       icon: Database,
       label: 'System Development',
-      color: 'green',
+      color: 'violet',
       position: 'top-1/2 -translate-y-1/2 -right-4 md:-right-8 lg:-right-12',
     },
     {
       id: 3,
       icon: Palette,
       label: 'Logo Designing',
-      color: 'blue',
+      color: 'violet',
       position: 'bottom-4 -right-2 md:bottom-8 md:-right-6 lg:bottom-12 lg:-right-8',
     },
   ];
