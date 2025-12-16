@@ -111,21 +111,21 @@ const Hero = () => {
   const floatingBadges = [
     {
       id: 1,
-      icon: Code,
+      icon: Palette,
       label: 'Web Designer',
       color: 'violet',
       position: 'top-4 -right-2 md:top-8 md:-right-6 lg:top-12 lg:-right-8',
     },
     {
       id: 2,
-      icon: Database,
+      icon: Code,
       label: 'Web Developer',
       color: 'violet',
       position: 'top-1/2 -translate-y-1/2 -right-4 md:-right-8 lg:-right-12',
     },
     {
       id: 3,
-      icon: Palette,
+      icon: Database,
       label: 'Software Developer',
       color: 'violet',
       position:
