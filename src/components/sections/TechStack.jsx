@@ -89,8 +89,8 @@ const TechStack = () => {
                             'px-3 py-2 lg:px-4 lg:py-2.5',
                             'text-sm lg:text-base font-medium',
                             'rounded-full',
-                            'bg-black text-white border border-black/30',
-                            'dark:bg-white dark:text-black dark:border-white/30',
+                            'bg-violet-100 text-violet-700 border border-violet-200',
+                            'dark:bg-violet-900/30 dark:text-violet-200 dark:border-violet-500/30',
                             'shadow-lg',
                             'transition-all duration-200',
                             'cursor-default'
