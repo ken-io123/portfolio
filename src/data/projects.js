@@ -38,7 +38,7 @@ export const projects = [
   {
     id: 5,
     title: 'Corporate Website',
-    category: 'Web Development',
+    category: 'Web Developer',
     description: 'Professional corporate website with responsive design and engaging animations.',
     image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80',
     tags: ['Next.js', 'TypeScript', 'Framer'],

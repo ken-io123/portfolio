@@ -110,14 +110,14 @@ const Hero = () => {
     {
       id: 1,
       icon: Code,
-      label: 'Web Development',
+      label: 'Web Developer',
       color: 'violet',
       position: 'top-4 -right-2 md:top-8 md:-right-6 lg:top-12 lg:-right-8',
     },
     {
       id: 2,
       icon: Database,
-      label: 'System Development',
+      label: 'Software Developer',
       color: 'violet',
       position: 'top-1/2 -translate-y-1/2 -right-4 md:-right-8 lg:-right-12',
     },
@@ -156,7 +156,7 @@ const Hero = () => {
               variants={fadeInUp}
               className="text-base md:text-lg text-muted mb-6 md:mb-8 max-w-xl"
             >
-              IT student specializing in web and system development. I build responsive websites and systems
+              IT student specializing in web and software development. I build responsive websites and systems
               using modern technologies to deliver reliable, high-quality solutions.
             </motion.p>
 
