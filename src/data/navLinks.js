@@ -11,7 +11,7 @@ export const navLinks = [
   },
   {
     id: 'works',
-    label: 'Works',
+    label: 'Projects',
     href: '#works',
   },
   {

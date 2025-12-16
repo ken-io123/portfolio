@@ -1,25 +1,25 @@
-import { Palette, Pen, Sparkles } from 'lucide-react';
+import { Code, Database, Palette } from 'lucide-react';
 
 export const services = [
   {
     id: 1,
-    icon: Pen,
-    title: 'Illustration',
-    description: 'Creating captivating visual narratives through custom illustrations that bring your ideas to life with artistic precision and creative flair.',
+    icon: Code,
+    title: 'Web Development',
+    description: 'Building responsive and modern websites using cutting-edge technologies. Specializing in creating user-friendly interfaces that deliver exceptional digital experiences.',
     color: 'violet',
   },
   {
     id: 2,
-    icon: Palette,
-    title: 'Graphic Design',
-    description: 'Crafting stunning visual identities and marketing materials that effectively communicate your brand message and captivate your audience.',
+    icon: Database,
+    title: 'System Development',
+    description: 'Developing robust and scalable system solutions tailored to your business needs. From backend architecture to full-stack applications that streamline operations.',
     color: 'green',
   },
   {
     id: 3,
-    icon: Sparkles,
-    title: 'Creative Branding',
-    description: 'Building memorable brand experiences through strategic design thinking, from logo creation to comprehensive brand guidelines.',
+    icon: Palette,
+    title: 'Logo Designing',
+    description: 'Crafting unique and memorable logos that capture your brand essence. Creating visual identities that stand out and resonate with your target audience.',
     color: 'blue',
   },
 ];

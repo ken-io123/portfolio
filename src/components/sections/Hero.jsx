@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Palette, Pen, Sparkles } from 'lucide-react';
+import { Code, Database, Palette } from 'lucide-react';
 import { stats } from '@/data/stats';
 import { Button, Container, Badge } from '@/components/ui';
 import profileImg from '@/assets/images/profile.png';
@@ -27,24 +27,24 @@ const Hero = () => {
   const floatingBadges = [
     {
       id: 1,
-      icon: Pen,
-      label: 'Illustration',
+      icon: Code,
+      label: 'Web Development',
       color: 'violet',
       position: 'top-4 -right-2 md:top-8 md:-right-6 lg:top-12 lg:-right-8',
       animation: 'animate-float',
     },
     {
       id: 2,
-      icon: Palette,
-      label: 'Graphic Design',
+      icon: Database,
+      label: 'System Development',
       color: 'green',
       position: 'top-1/2 -translate-y-1/2 -right-4 md:-right-8 lg:-right-12',
       animation: 'animate-float-delayed',
     },
     {
       id: 3,
-      icon: Sparkles,
-      label: 'Creative Branding',
+      icon: Palette,
+      label: 'Logo Designing',
       color: 'blue',
       position: 'bottom-4 -right-2 md:bottom-8 md:-right-6 lg:bottom-12 lg:-right-8',
       animation: 'animate-float-slow',
@@ -70,7 +70,9 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              Let's Work Together to Create Wonders with Us
+              Hi!
+              <br />
+              I am Kenrick.
             </motion.h1>
 
             <motion.p
@@ -79,8 +81,8 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              A visionary creative, crafting captivating wonders through art and
-              design. Adept at turning imagination into extraordinary reality.
+              IT student specializing in web and system development. I build responsive websites and systems
+              using modern technologies to deliver reliable, high-quality solutions.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -91,7 +93,7 @@ const Hero = () => {
               transition={{ delay: 0.6, duration: 0.8 }}
             >
               <Button variant="primary">Let's Talk</Button>
-              <Button variant="outline">Start Project</Button>
+              <Button variant="outline">View Projects</Button>
             </motion.div>
 
             {/* Stats */}
