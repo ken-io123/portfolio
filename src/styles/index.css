@@ -5,18 +5,18 @@
 /* CSS Variables for Theme Colors */
 :root {
   /* Light mode colors */
-  --color-bg: 248 250 252;          /* slate-50 */
-  --color-text: 30 41 59;           /* slate-800 */
-  --color-text-muted: 100 116 139;  /* slate-500 */
-  --color-primary: 124 58 237;      /* violet-600 */
+  --color-bg: 248 250 252; /* slate-50 */
+  --color-text: 30 41 59; /* slate-800 */
+  --color-text-muted: 100 116 139; /* slate-500 */
+  --color-primary: 124 58 237; /* violet-600 */
   --color-primary-dark: 109 40 217; /* violet-700 */
 }
 
 .dark {
   /* Dark mode colors */
-  --color-bg: 15 23 42;             /* slate-900 */
-  --color-text: 248 250 252;        /* slate-50 */
-  --color-text-muted: 148 163 184;  /* slate-400 */
+  --color-bg: 15 23 42; /* slate-900 */
+  --color-text: 248 250 252; /* slate-50 */
+  --color-text-muted: 148 163 184; /* slate-400 */
 }
 
 /* Base Styles */
@@ -34,7 +34,10 @@
 
   /* Smooth transitions for theme changes */
   * {
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+    transition:
+      background-color 0.2s,
+      color 0.2s,
+      border-color 0.2s;
   }
 }
 
@@ -59,11 +62,25 @@
 
   /* Gradient backgrounds */
   .hero-gradient {
-    background: linear-gradient(135deg, #f3f4f6 0%, #e0e7ff 25%, #ddd6fe 50%, #e0e7ff 75%, #f3f4f6 100%);
+    background: linear-gradient(
+      135deg,
+      #f3f4f6 0%,
+      #e0e7ff 25%,
+      #ddd6fe 50%,
+      #e0e7ff 75%,
+      #f3f4f6 100%
+    );
   }
 
   .dark .hero-gradient {
-    background: linear-gradient(135deg, #0f0a1f 0%, #1e1b4b 30%, #2d1b69 50%, #3730a3 70%, #1e1b4b 100%);
+    background: linear-gradient(
+      135deg,
+      #0f0a1f 0%,
+      #1e1b4b 30%,
+      #2d1b69 50%,
+      #3730a3 70%,
+      #1e1b4b 100%
+    );
   }
 
   /* Card hover effect */
@@ -90,7 +107,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }

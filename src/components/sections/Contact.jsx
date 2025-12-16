@@ -181,7 +181,11 @@ const Contact = () => {
                 <>
                   <motion.div
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                    transition={{
+                      duration: 1,
+                      repeat: Infinity,
+                      ease: 'linear',
+                    }}
                     className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
                   />
                   Sending...
@@ -209,7 +213,9 @@ const Contact = () => {
                 {submitStatus === 'success' ? (
                   <>
                     <CheckCircle size={20} />
-                    <span>Message sent successfully! I'll get back to you soon.</span>
+                    <span>
+                      Message sent successfully! I'll get back to you soon.
+                    </span>
                   </>
                 ) : (
                   <>

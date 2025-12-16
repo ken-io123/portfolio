@@ -7,7 +7,7 @@ const Footer = () => {
 
   const handleNavClick = (e, href) => {
     e.preventDefault();
-    
+
     const element = document.querySelector(href);
     if (element) {
       const offset = 80;

@@ -9,7 +9,9 @@ const Hero = () => {
   const [counts, setCounts] = useState({ 0: 0, 1: 0, 2: 0 });
 
   // Detect if user prefers reduced motion
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const prefersReducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
 
   // Count-up animation effect
   useEffect(() => {
@@ -39,8 +41,8 @@ const Hero = () => {
   };
 
   const fadeInUp = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 30,
     },
     visible: {
@@ -55,8 +57,8 @@ const Hero = () => {
   };
 
   const fadeInRight = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       x: 50,
     },
     visible: {
@@ -71,8 +73,8 @@ const Hero = () => {
   };
 
   const scaleIn = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       scale: 0.8,
     },
     visible: {
@@ -87,12 +89,12 @@ const Hero = () => {
   };
 
   const badgeVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       scale: 0,
       y: 20,
     },
-    visible: (custom) => ({
+    visible: custom => ({
       opacity: 1,
       scale: 1,
       y: 0,
@@ -110,23 +112,24 @@ const Hero = () => {
     {
       id: 1,
       icon: Code,
-      label: 'Web Developer',
+      label: 'Web Designer',
       color: 'violet',
       position: 'top-4 -right-2 md:top-8 md:-right-6 lg:top-12 lg:-right-8',
     },
     {
       id: 2,
       icon: Database,
-      label: 'Software Developer',
+      label: 'Web Developer',
       color: 'violet',
       position: 'top-1/2 -translate-y-1/2 -right-4 md:-right-8 lg:-right-12',
     },
     {
       id: 3,
       icon: Palette,
-      label: 'Logo Designing',
+      label: 'Software Developer',
       color: 'violet',
-      position: 'bottom-4 -right-2 md:bottom-8 md:-right-6 lg:bottom-12 lg:-right-8',
+      position:
+        'bottom-4 -right-2 md:bottom-8 md:-right-6 lg:bottom-12 lg:-right-8',
     },
   ];
 
@@ -148,20 +151,20 @@ const Hero = () => {
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 md:mb-6 leading-tight"
             >
               Hi!
-              <br />
-              I am Kenrick.
+              <br />I am Kenrick.
             </motion.h1>
 
             <motion.p
               variants={fadeInUp}
               className="text-base md:text-lg text-muted mb-6 md:mb-8 max-w-xl"
             >
-              IT student specializing in web and software development. I build responsive websites and systems
-              using modern technologies to deliver reliable, high-quality solutions.
+              IT student specializing in web and software development. I design
+              and build responsive websites and systems to deliver reliable,
+              user-friendly solutions.
             </motion.p>
 
             {/* CTA Buttons */}
-            <motion.div 
+            <motion.div
               variants={fadeInUp}
               className="flex flex-wrap gap-4 mb-12"
             >
@@ -170,12 +173,12 @@ const Hero = () => {
             </motion.div>
 
             {/* Stats */}
-            <motion.div 
+            <motion.div
               variants={fadeInUp}
               className="grid grid-cols-3 gap-4 md:gap-8"
             >
               {stats.map((stat, index) => (
-                <motion.div 
+                <motion.div
                   key={stat.id}
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -189,7 +192,9 @@ const Hero = () => {
                   <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-1">
                     {formatCount(counts[index], stat)}
                   </div>
-                  <div className="text-xs sm:text-sm text-muted">{stat.label}</div>
+                  <div className="text-xs sm:text-sm text-muted">
+                    {stat.label}
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
@@ -227,10 +232,10 @@ const Hero = () => {
                   initial="hidden"
                   animate="visible"
                   className={`absolute ${badge.position} z-20`}
-                  whileHover={{ 
+                  whileHover={{
                     scale: 1.1,
                     y: -5,
-                    transition: { type: 'spring', stiffness: 300, damping: 10 }
+                    transition: { type: 'spring', stiffness: 300, damping: 10 },
                   }}
                 >
                   <motion.div

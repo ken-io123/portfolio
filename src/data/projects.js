@@ -2,9 +2,11 @@ export const projects = [
   {
     id: 1,
     title: 'Modern E-commerce Platform',
-    category: 'Web Design',
-    description: 'A sleek and intuitive e-commerce platform with seamless user experience and modern design principles.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
+    category: 'Web Designer',
+    description:
+      'A sleek and intuitive e-commerce platform with seamless user experience and modern design principles.',
+    image:
+      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
     tags: ['React', 'Tailwind', 'Node.js'],
     link: '#',
   },
@@ -12,8 +14,10 @@ export const projects = [
     id: 2,
     title: 'Brand Identity Design',
     category: 'Branding',
-    description: 'Complete brand identity package including logo, color palette, typography, and brand guidelines.',
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80',
+    description:
+      'Complete brand identity package including logo, color palette, typography, and brand guidelines.',
+    image:
+      'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80',
     tags: ['Illustrator', 'Branding', 'Design'],
     link: '#',
   },
@@ -21,8 +25,10 @@ export const projects = [
     id: 3,
     title: 'Mobile App UI/UX',
     category: 'UI/UX Design',
-    description: 'Intuitive mobile application design focused on user experience and modern interface patterns.',
-    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80',
+    description:
+      'Intuitive mobile application design focused on user experience and modern interface patterns.',
+    image:
+      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80',
     tags: ['Figma', 'UI/UX', 'Mobile'],
     link: '#',
   },
@@ -30,8 +36,10 @@ export const projects = [
     id: 4,
     title: 'Editorial Illustration',
     category: 'Illustration',
-    description: 'Custom illustrations for editorial content, bringing stories to life with unique artistic style.',
-    image: 'https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=800&q=80',
+    description:
+      'Custom illustrations for editorial content, bringing stories to life with unique artistic style.',
+    image:
+      'https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=800&q=80',
     tags: ['Illustration', 'Digital Art', 'Creative'],
     link: '#',
   },
@@ -39,8 +47,10 @@ export const projects = [
     id: 5,
     title: 'Corporate Website',
     category: 'Web Developer',
-    description: 'Professional corporate website with responsive design and engaging animations.',
-    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80',
+    description:
+      'Professional corporate website with responsive design and engaging animations.',
+    image:
+      'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80',
     tags: ['Next.js', 'TypeScript', 'Framer'],
     link: '#',
   },
@@ -48,8 +58,10 @@ export const projects = [
     id: 6,
     title: 'Social Media Campaign',
     category: 'Graphic Design',
-    description: 'Comprehensive social media visual campaign with consistent branding and engaging graphics.',
-    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80',
+    description:
+      'Comprehensive social media visual campaign with consistent branding and engaging graphics.',
+    image:
+      'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80',
     tags: ['Photoshop', 'Social Media', 'Marketing'],
     link: '#',
   },

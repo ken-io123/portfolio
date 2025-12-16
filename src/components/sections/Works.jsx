@@ -29,7 +29,10 @@ const Works = () => {
   };
 
   return (
-    <section id="works" className="py-12 md:py-16 lg:py-20 bg-slate-50 dark:bg-slate-900">
+    <section
+      id="works"
+      className="py-12 md:py-16 lg:py-20 bg-slate-50 dark:bg-slate-900"
+    >
       <Container>
         <SectionHeading
           title="Featured Works"

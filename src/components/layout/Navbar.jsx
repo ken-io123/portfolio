@@ -20,10 +20,10 @@ const Navbar = () => {
 
   const handleNavClick = (e, href) => {
     e.preventDefault();
-    
+
     // Close mobile menu first
     setIsMobileMenuOpen(false);
-    
+
     // Small delay to allow menu animation to complete
     setTimeout(() => {
       const element = document.querySelector(href);

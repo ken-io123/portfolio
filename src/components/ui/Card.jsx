@@ -1,11 +1,6 @@
 import { cn } from '@/lib/utils';
 
-const Card = ({ 
-  children, 
-  className,
-  hover = true,
-  ...props 
-}) => {
+const Card = ({ children, className, hover = true, ...props }) => {
   return (
     <div
       className={cn(

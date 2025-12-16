@@ -2,14 +2,14 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useAnimateOnScroll } from '@/hooks/useAnimateOnScroll';
 
-const SectionHeading = ({ 
-  title, 
-  subtitle, 
+const SectionHeading = ({
+  title,
+  subtitle,
   className,
   titleClassName,
   subtitleClassName,
   align = 'center',
-  ...props 
+  ...props
 }) => {
   const { ref, inView } = useAnimateOnScroll({ threshold: 0.3 });
 

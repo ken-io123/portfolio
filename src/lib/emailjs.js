@@ -13,7 +13,7 @@ export const EMAILJS_CONFIG = {
  * @param {Object} formData - Form data containing name, email, message
  * @returns {Promise} EmailJS response
  */
-export const sendEmail = async (formData) => {
+export const sendEmail = async formData => {
   try {
     const response = await emailjs.send(
       EMAILJS_CONFIG.SERVICE_ID,

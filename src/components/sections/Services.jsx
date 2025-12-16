@@ -45,7 +45,7 @@ const Services = () => {
         >
           {services.map(service => {
             const Icon = service.icon;
-            
+
             // Color mapping for proper Tailwind classes
             const colorClasses = {
               violet: {
@@ -68,13 +68,15 @@ const Services = () => {
                   <div
                     className={cn(
                       'w-16 h-16 rounded-full flex items-center justify-center mb-6',
-                      colorClasses[service.color]?.bg || 'bg-violet-100 dark:bg-violet-900/30'
+                      colorClasses[service.color]?.bg ||
+                        'bg-violet-100 dark:bg-violet-900/30'
                     )}
                   >
                     <Icon
                       size={32}
                       className={cn(
-                        colorClasses[service.color]?.text || 'text-violet-600 dark:text-violet-400'
+                        colorClasses[service.color]?.text ||
+                          'text-violet-600 dark:text-violet-400'
                       )}
                     />
                   </div>

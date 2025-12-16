@@ -5,20 +5,20 @@
 /* CSS Variables for Theme Colors */
 :root {
   /* Light mode colors */
-  --color-bg: 248 250 252;          /* slate-50 */
-  --color-text: 30 41 59;           /* slate-800 */
-  --color-text-muted: 100 116 139;  /* slate-500 */
-  --color-primary: 124 58 237;      /* violet-600 */
+  --color-bg: 248 250 252; /* slate-50 */
+  --color-text: 30 41 59; /* slate-800 */
+  --color-text-muted: 100 116 139; /* slate-500 */
+  --color-primary: 124 58 237; /* violet-600 */
   --color-primary-dark: 109 40 217; /* violet-700 */
-  --color-border: 226 232 240;      /* slate-200 */
+  --color-border: 226 232 240; /* slate-200 */
 }
 
 .dark {
   /* Dark mode colors */
-  --color-bg: 15 23 42;             /* slate-900 */
-  --color-text: 248 250 252;        /* slate-50 */
-  --color-text-muted: 148 163 184;  /* slate-400 */
-  --color-border: 51 65 85;         /* slate-700 */
+  --color-bg: 15 23 42; /* slate-900 */
+  --color-text: 248 250 252; /* slate-50 */
+  --color-text-muted: 148 163 184; /* slate-400 */
+  --color-border: 51 65 85; /* slate-700 */
 }
 
 /* Base Styles */
@@ -96,7 +96,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }

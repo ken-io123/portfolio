@@ -27,7 +27,7 @@ export const useTheme = () => {
     });
   };
 
-  const setTheme = (theme) => {
+  const setTheme = theme => {
     const isDarkTheme = theme === 'dark';
     setIsDark(isDarkTheme);
     localStorage.setItem('theme', theme);

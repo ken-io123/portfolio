@@ -1,20 +1,24 @@
 import { cn } from '@/lib/utils';
 
-const Button = ({ 
-  children, 
-  variant = 'primary', 
-  onClick, 
+const Button = ({
+  children,
+  variant = 'primary',
+  onClick,
   className,
   type = 'button',
   disabled = false,
-  ...props 
+  ...props
 }) => {
-  const baseStyles = 'px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-medium transition-all duration-300 inline-flex items-center justify-center gap-2 text-sm sm:text-base min-h-[44px]';
-  
+  const baseStyles =
+    'px-5 py-2.5 sm:px-6 sm:py-3 rounded-full font-medium transition-all duration-300 inline-flex items-center justify-center gap-2 text-sm sm:text-base min-h-[44px]';
+
   const variants = {
-    primary: 'bg-primary text-white hover:bg-primary-dark shadow-lg shadow-violet-500/20 hover:shadow-xl hover:shadow-violet-500/30 active:scale-95',
-    secondary: 'bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background active:scale-95',
-    outline: 'bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white active:scale-95 dark:text-white',
+    primary:
+      'bg-primary text-white hover:bg-primary-dark shadow-lg shadow-violet-500/20 hover:shadow-xl hover:shadow-violet-500/30 active:scale-95',
+    secondary:
+      'bg-transparent border-2 border-foreground text-foreground hover:bg-foreground hover:text-background active:scale-95',
+    outline:
+      'bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white active:scale-95 dark:text-white',
   };
 
   return (

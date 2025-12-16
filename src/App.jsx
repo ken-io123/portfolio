@@ -1,5 +1,11 @@
 import { Navbar, Footer } from '@/components/layout';
-import { Hero, Services, Works, Contact } from '@/components/sections';
+import {
+  Hero,
+  TechStack,
+  Services,
+  Works,
+  Contact,
+} from '@/components/sections';
 
 function App() {
   return (
@@ -7,6 +13,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <TechStack />
         <Services />
         <Works />
         <Contact />
