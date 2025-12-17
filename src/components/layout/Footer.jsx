@@ -26,24 +26,25 @@ const Footer = () => {
       <Container>
         <div className="py-8 md:py-12">
           {/* Top Section */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 mb-8 items-start">
             {/* Brand */}
-            <div>
+            <div className="text-center sm:text-left">
               <h3 className="text-2xl font-bold text-foreground mb-4">
                 KENRICK.
               </h3>
-              <p className="text-muted text-sm max-w-xs">
-                Creating captivating wonders through art and design. Turning
-                imagination into extraordinary reality.
+              <p className="text-muted text-sm max-w-sm mx-auto sm:mx-0">
+                IT student specializing in web and software development. I
+                design and build responsive websites and systems that deliver
+                reliable, accessible, and user‑friendly solutions.
               </p>
             </div>
 
             {/* Quick Links */}
-            <div>
+            <div className="text-center md:text-left md:ml-20 lg:ml-32">
               <h4 className="text-lg font-semibold text-foreground mb-4">
                 Quick Links
               </h4>
-              <ul className="space-y-2">
+              <ul className="flex flex-wrap justify-center gap-4 md:block md:space-y-2">
                 {navLinks.map(link => (
                   <li key={link.id}>
                     <a
@@ -59,11 +60,11 @@ const Footer = () => {
             </div>
 
             {/* Social Links */}
-            <div>
-              <h4 className="text-lg font-semibold text-foreground mb-4">
+            <div className="text-center md:text-right">
+              <h4 className="text-lg font-semibold text-foreground mb-4 text-center md:text-right">
                 Connect
               </h4>
-              <div className="flex gap-4">
+              <div className="flex justify-center md:justify-end gap-4">
                 {socialLinks.map(social => {
                   const Icon = social.icon;
                   return (

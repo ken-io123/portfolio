@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { navLinks } from '@/data/navLinks';
 import { Button, ThemeToggle, Container } from '@/components/ui';
 import { cn } from '@/lib/utils';
+import logo from '@/assets/images/k-logo.png';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -184,11 +185,14 @@ const Navbar = () => {
       <Container>
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a
-            href="#"
-            className="text-2xl font-bold text-foreground transition-colors"
-          >
-            KENRICK.
+          <a href="#" className="inline-flex items-center transition-colors" aria-label="Home">
+            <img
+              src={logo}
+              alt="Kenrick logo"
+              className="-translate-x-1 md:-translate-x-2 lg:-translate-x-3 h-16 md:h-20 lg:h-24 w-auto object-contain"
+              loading="lazy"
+              decoding="async"
+            />
           </a>
 
           {/* Desktop Navigation */}
