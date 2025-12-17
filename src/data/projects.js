@@ -50,37 +50,4 @@ export const projects = [
     tags: ['Figma', 'UI/UX', 'Mobile'],
     link: '#',
   },
-  {
-    id: 4,
-    title: 'Editorial Illustration',
-    category: 'Illustration',
-    description:
-      'Custom illustrations for editorial content, bringing stories to life with unique artistic style.',
-    image:
-      'https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=800&q=80',
-    tags: ['Illustration', 'Digital Art', 'Creative'],
-    link: '#',
-  },
-  {
-    id: 5,
-    title: 'Corporate Website',
-    category: 'Web Developer',
-    description:
-      'Professional corporate website with responsive design and engaging animations.',
-    image:
-      'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80',
-    tags: ['Next.js', 'TypeScript', 'Framer'],
-    link: '#',
-  },
-  {
-    id: 6,
-    title: 'Social Media Campaign',
-    category: 'Graphic Design',
-    description:
-      'Comprehensive social media visual campaign with consistent branding and engaging graphics.',
-    image:
-      'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80',
-    tags: ['Photoshop', 'Social Media', 'Marketing'],
-    link: '#',
-  },
 ];

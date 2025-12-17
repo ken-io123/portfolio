@@ -10,6 +10,9 @@
   --color-text-muted: 100 116 139; /* slate-500 */
   --color-primary: 124 58 237; /* violet-600 */
   --color-primary-dark: 109 40 217; /* violet-700 */
+  /* Card shadow tokens */
+  --card-top-shadow: rgba(0,0,0,0.22);
+  --card-grid-color: rgba(0,0,0,0.06);
 }
 
 .dark {
@@ -17,6 +20,9 @@
   --color-bg: 15 23 42; /* slate-900 */
   --color-text: 248 250 252; /* slate-50 */
   --color-text-muted: 148 163 184; /* slate-400 */
+  /* Card shadow tokens in dark mode */
+  --card-top-shadow: rgba(255,255,255,0.10);
+  --card-grid-color: rgba(255,255,255,0.04);
 }
 
 /* Base Styles */

@@ -138,7 +138,18 @@ const Works = () => {
           {projects.map(project => (
             <motion.div key={project.id} variants={cardVariants}>
               <div className="group relative overflow-visible transition-all duration-300 -translate-y-1 hover:-translate-y-3">
-                {/* soft spread shadow under the card (separate element so card has no box-shadow) */}
+                {/* soft spread shadow above the card (top-only shadow):
+                  - black shadow in light mode
+                  - white shadow in dark mode
+                  Keep it subtle and only on the top so sides/bottom remain unchanged */}
+                <div
+                  className="absolute -top-10 left-1/2 -translate-x-1/2 w-[90%] h-28 rounded-2xl pointer-events-none z-0 filter blur-3xl opacity-90"
+                  style={{
+                    backgroundImage: `linear-gradient(to bottom, var(--card-top-shadow), rgba(0,0,0,0) 55%), repeating-linear-gradient(90deg, var(--card-grid-color) 0 1px, transparent 1px 24px)`
+                  }}
+                ></div>
+
+                {/* restored soft spread shadow under the card (original): keep previous bottom spread for depth */}
                 <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[92%] h-40 rounded-2xl pointer-events-none z-0 filter blur-3xl bg-gradient-to-b from-transparent to-black/25 dark:to-black/40 opacity-90"></div>
                 {/* card surface (above the soft shadow) */}
                 <div className="relative z-10 bg-white dark:bg-slate-800 rounded-2xl overflow-hidden">
