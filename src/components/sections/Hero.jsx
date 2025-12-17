@@ -171,8 +171,8 @@ const Hero = () => {
               className="text-base md:text-lg text-muted mb-6 md:mb-8 max-w-xl"
             >
               IT student specializing in web and software development. I design
-              and build responsive websites and systems to deliver reliable,
-              user-friendly solutions.
+              and build responsive websites and systems that deliver reliable,
+              accessible, and user‑friendly solutions.
             </motion.p>
 
             {/* CTA Buttons */}
