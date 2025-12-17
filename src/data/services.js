@@ -22,7 +22,7 @@ export const services = [
     icon: Database,
     title: 'Software Developer',
     description:
-      'Crafting unique and memorable logos that capture your brand essence. Creating visual identities that stand out and resonate with your target audience.',
+      'Developing custom software solutions and scalable applications tailored to unique business requirements.',
     color: 'blue',
   },
 ];

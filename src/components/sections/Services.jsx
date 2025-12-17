@@ -33,7 +33,7 @@ const Services = () => {
       <Container>
         <SectionHeading
           title="Services"
-          subtitle="Transforming ideas into stunning visual experiences with creativity and precision"
+          subtitle="Transforming ideas into reliable, scalable digital solutions with modern web and software development."
         />
 
         <motion.div
