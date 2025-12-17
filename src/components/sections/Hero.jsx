@@ -21,6 +21,18 @@ const Hero = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Scroll to section helper (matches Navbar behavior)
+  const scrollToSection = href => {
+    const element = document.querySelector(href);
+    if (element) {
+      const offset = 80; // navbar offset
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+    }
+  };
+
   const formatCount = (value, stat) => {
     if (stat.id === 1) return `${value}+`;
     if (stat.id === 2) return `${value}`;
@@ -168,8 +180,21 @@ const Hero = () => {
               variants={fadeInUp}
               className="flex flex-wrap gap-4 mb-12"
             >
-              <Button variant="primary">Let's Talk</Button>
-              <Button variant="outline">View Projects</Button>
+              <Button
+                variant="primary"
+                onClick={() => scrollToSection('#contact')}
+                aria-label="Go to contact"
+              >
+                Let's Talk
+              </Button>
+
+              <Button
+                variant="outline"
+                onClick={() => scrollToSection('#works')}
+                aria-label="View projects"
+              >
+                View Projects
+              </Button>
             </motion.div>
 
             {/* Stats */}
