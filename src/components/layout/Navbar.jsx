@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { navLinks } from '@/data/navLinks';
@@ -8,6 +8,10 @@ import { cn } from '@/lib/utils';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeId, setActiveId] = useState(null);
+  const navLinksRef = useRef({});
+  const navWrapperRef = useRef(null);
+  const [indicator, setIndicator] = useState({ left: 0, width: 0, visible: false });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,11 +22,139 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e, href) => {
+  // Keep track of active nav link from URL hash (and on hash change)
+  useEffect(() => {
+    const setFromHash = () => {
+      const hash = window.location.hash;
+      const found = navLinks.find(l => l.href === hash);
+      if (found) setActiveId(found.id);
+      else setActiveId(null);
+    };
+
+    setFromHash();
+    window.addEventListener('hashchange', setFromHash);
+    return () => window.removeEventListener('hashchange', setFromHash);
+  }, []);
+
+  // Observe sections to update active link on scroll
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            const found = navLinks.find(l => l.href === `#${id}` || l.id === id);
+            if (found) setActiveId(found.id);
+          }
+        });
+      },
+      { root: null, rootMargin: '-40% 0px -40% 0px', threshold: 0.4 }
+    );
+
+    const sections = navLinks
+      .map(l => document.querySelector(l.href))
+      .filter(Boolean);
+
+    sections.forEach(s => observer.observe(s));
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Update animated indicator position (desktop)
+  useEffect(() => {
+    const updateIndicator = () => {
+      const wrapper = navWrapperRef.current;
+      if (!wrapper) return;
+
+      const activeEl = navLinksRef.current[activeId];
+      if (activeEl) {
+        const wrapRect = wrapper.getBoundingClientRect();
+        const rect = activeEl.getBoundingClientRect();
+        const left = rect.left - wrapRect.left;
+        const width = rect.width;
+
+        setIndicator({ left, width, visible: true });
+      } else {
+        setIndicator(prev => ({ ...prev, visible: false }));
+      }
+    };
+
+    // update on activeId change and after fonts/layout settle
+    updateIndicator();
+    const id = setTimeout(updateIndicator, 120);
+
+    const onResize = () => updateIndicator();
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      clearTimeout(id);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [activeId]);
+
+  // Fallback / complement: update active link based on nearest section to top
+  useEffect(() => {
+    const offset = 88; // should match navbar height used in scroll calculations
+    let ticking = false;
+
+    const updateActive = () => {
+      const sections = navLinks
+        .map(l => ({ id: l.id, el: document.querySelector(l.href) }))
+        .filter(s => s.el);
+
+      if (!sections.length) return;
+
+      const viewportTop = offset;
+      let closest = null;
+      let closestDistance = Infinity;
+
+      sections.forEach(s => {
+        const rect = s.el.getBoundingClientRect();
+        // distance from element top to navbar bottom (viewportTop)
+        const distance = Math.abs(rect.top - viewportTop);
+        // consider element visible if any part is in viewport
+        const isVisible = rect.bottom > 0 && rect.top < window.innerHeight;
+        if (isVisible && distance < closestDistance) {
+          closestDistance = distance;
+          closest = s.id;
+        }
+      });
+
+      if (closest && closest !== activeId) {
+        setActiveId(closest);
+      }
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActive();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+
+    // init
+    updateActive();
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [activeId]);
+
+  const handleNavClick = (e, href, id) => {
     e.preventDefault();
 
     // Close mobile menu first
     setIsMobileMenuOpen(false);
+    setActiveId(id);
 
     // Small delay to allow menu animation to complete
     setTimeout(() => {
@@ -54,23 +186,46 @@ const Navbar = () => {
           {/* Logo */}
           <a
             href="#"
-            className="text-2xl font-bold text-foreground hover:text-primary transition-colors"
+            className="text-2xl font-bold text-foreground transition-colors"
           >
             KENRICK.
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div ref={navWrapperRef} className="hidden md:flex items-center gap-8 relative">
             {navLinks.map(link => (
               <a
                 key={link.id}
                 href={link.href}
-                onClick={e => handleNavClick(e, link.href)}
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                ref={el => (navLinksRef.current[link.id] = el)}
+                onClick={e => handleNavClick(e, link.href, link.id)}
+                className={cn(
+                  'transition-colors font-medium inline-flex flex-col items-center text-foreground px-1'
+                )}
+                aria-current={activeId === link.id ? 'page' : undefined}
               >
-                {link.label}
+                <span>{link.label}</span>
+                <span
+                    className={cn(
+                      'block h-0.5 rounded mt-1 w-full transition-colors bg-transparent'
+                    )}
+                  aria-hidden
+                />
               </a>
             ))}
+
+            {/* Animated indicator */}
+            <span
+              aria-hidden
+              className={cn(
+                'absolute bottom-0 h-0.5 rounded bg-black dark:bg-white transition-all duration-300 ease-in-out'
+              )}
+              style={{
+                left: indicator.visible ? `${indicator.left}px` : 0,
+                width: indicator.visible ? `${indicator.width}px` : 0,
+                opacity: indicator.visible ? 1 : 0,
+              }}
+            />
           </div>
 
           {/* Right Actions */}
@@ -83,7 +238,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+              className="md:hidden p-2 text-foreground transition-colors"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -108,13 +263,24 @@ const Navbar = () => {
                   <motion.a
                     key={link.id}
                     href={link.href}
-                    onClick={e => handleNavClick(e, link.href)}
-                    className="block py-3 text-foreground hover:text-primary transition-colors font-medium text-lg"
+                    onClick={e => handleNavClick(e, link.href, link.id)}
+                    className={cn(
+                        'block py-3 transition-colors font-medium text-lg text-foreground'
+                      )}
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.3 }}
                   >
-                    {link.label}
+                    <div className="flex flex-col items-start">
+                      <span>{link.label}</span>
+                      <span
+                        className={cn(
+                            'block h-0.5 rounded mt-2 w-16 transition-colors',
+                            activeId === link.id ? 'bg-black dark:bg-white' : 'bg-transparent'
+                          )}
+                        aria-hidden
+                      />
+                    </div>
                   </motion.a>
                 ))}
                 <Button variant="primary" className="w-full">
