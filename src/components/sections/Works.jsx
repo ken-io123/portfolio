@@ -35,7 +35,7 @@ const Works = () => {
     >
       <Container>
         <SectionHeading
-          title="Featured Works"
+          title="Featured Projects"
           subtitle="A showcase of creative projects that blend design excellence with innovative solutions"
         />
 

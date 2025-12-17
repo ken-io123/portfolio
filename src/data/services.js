@@ -15,7 +15,7 @@ export const services = [
     title: 'Web Developer',
     description:
       'Developing robust and scalable system solutions tailored to your business needs. From backend architecture to full-stack applications that streamline operations.',
-    color: 'green',
+    color: 'violet',
   },
   {
     id: 3,
@@ -23,6 +23,6 @@ export const services = [
     title: 'Software Developer',
     description:
       'Developing custom software solutions and scalable applications tailored to unique business requirements.',
-    color: 'blue',
+    color: 'violet',
   },
 ];
