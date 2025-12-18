@@ -180,7 +180,7 @@ const Works = () => {
                   <h3 className="text-xl font-bold text-foreground mb-3">
                     {project.title}
                   </h3>
-                  <p className="text-muted text-sm mb-4 line-clamp-2">
+                  <p className="text-muted text-sm mb-4">
                     {project.description}
                   </p>
                   {/* Tags */}
