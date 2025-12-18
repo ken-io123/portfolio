@@ -55,7 +55,7 @@ const Hero = () => {
   const fadeInUp = {
     hidden: {
       opacity: 0,
-      y: 30,
+      y: prefersReducedMotion ? 0 : 30,
     },
     visible: {
       opacity: 1,
@@ -71,7 +71,7 @@ const Hero = () => {
   const fadeInRight = {
     hidden: {
       opacity: 0,
-      x: 50,
+      x: prefersReducedMotion ? 0 : 50,
     },
     visible: {
       opacity: 1,
@@ -87,7 +87,7 @@ const Hero = () => {
   const scaleIn = {
     hidden: {
       opacity: 0,
-      scale: 0.8,
+      scale: prefersReducedMotion ? 1 : 0.8,
     },
     visible: {
       opacity: 1,
@@ -103,8 +103,8 @@ const Hero = () => {
   const badgeVariants = {
     hidden: {
       opacity: 0,
-      scale: 0,
-      y: 20,
+      scale: prefersReducedMotion ? 1 : 0,
+      y: prefersReducedMotion ? 0 : 20,
     },
     visible: custom => ({
       opacity: 1,
@@ -114,7 +114,7 @@ const Hero = () => {
         type: 'spring',
         damping: 12,
         stiffness: 150,
-        delay: 0.8 + custom * 0.15,
+        delay: prefersReducedMotion ? 0 : 0.8 + custom * 0.15,
       },
     }),
   };
@@ -148,7 +148,7 @@ const Hero = () => {
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center hero-gradient pt-20"
+      className="min-h-screen flex items-center hero-gradient pt-20 overflow-hidden"
     >
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center py-8 md:py-12">
@@ -200,7 +200,7 @@ const Hero = () => {
             {/* Stats */}
             <motion.div
               variants={fadeInUp}
-              className="grid grid-cols-3 gap-4 md:gap-8"
+              className="grid grid-cols-2 min-[360px]:grid-cols-3 gap-3 sm:gap-4 md:gap-8"
             >
               {stats.map((stat, index) => (
                 <motion.div

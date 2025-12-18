@@ -99,6 +99,13 @@
     @apply absolute px-4 py-2 bg-white dark:bg-slate-800 rounded-full shadow-lg;
     @apply flex items-center gap-2 text-sm font-medium;
   }
+
+  /* Landscape orientation handling for mobile */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .section-container {
+      @apply py-12;
+    }
+  }
 }
 
 /* Utility Classes */

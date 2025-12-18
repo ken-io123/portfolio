@@ -9,7 +9,7 @@ const ThemeToggle = ({ className }) => {
     return (
       <button
         className={cn(
-          'p-2 rounded-lg bg-slate-200 dark:bg-slate-700',
+          'p-2.5 sm:p-2 rounded-lg bg-slate-200 dark:bg-slate-700',
           className
         )}
         disabled
@@ -23,7 +23,7 @@ const ThemeToggle = ({ className }) => {
     <button
       onClick={toggleTheme}
       className={cn(
-        'p-2 rounded-lg transition-all duration-300',
+        'p-2.5 sm:p-2 rounded-lg transition-all duration-300',
         'bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600',
         'text-slate-800 dark:text-slate-200',
         className

@@ -90,7 +90,7 @@ const Contact = () => {
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-foreground mb-2"
+                className="block text-sm sm:text-base font-medium text-foreground mb-2"
               >
                 Name
               </label>
@@ -118,7 +118,7 @@ const Contact = () => {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-foreground mb-2"
+                className="block text-sm sm:text-base font-medium text-foreground mb-2"
               >
                 Email
               </label>
@@ -146,7 +146,7 @@ const Contact = () => {
             <div>
               <label
                 htmlFor="message"
-                className="block text-sm font-medium text-foreground mb-2"
+                className="block text-sm sm:text-base font-medium text-foreground mb-2"
               >
                 Message
               </label>

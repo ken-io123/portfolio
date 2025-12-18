@@ -189,7 +189,7 @@ const Navbar = () => {
             <img
               src={logo}
               alt="Kenrick logo"
-              className="-translate-x-1 md:-translate-x-2 lg:-translate-x-3 h-16 md:h-20 lg:h-24 w-auto object-contain"
+              className="translate-x-0 sm:-translate-x-1 md:-translate-x-2 lg:-translate-x-3 h-16 md:h-20 lg:h-24 w-auto object-contain"
               loading="lazy"
               decoding="async"
             />

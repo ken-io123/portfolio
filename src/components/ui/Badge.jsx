@@ -22,7 +22,7 @@ const Badge = ({
   return (
     <div
       className={cn(
-        'px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 w-fit backdrop-blur-sm',
+        'px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium flex items-center gap-2 w-fit backdrop-blur-sm',
         colorVariants[color],
         className
       )}

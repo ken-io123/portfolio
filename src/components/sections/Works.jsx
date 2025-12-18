@@ -216,7 +216,7 @@ const Works = () => {
             <div className="relative w-full max-w-full lg:max-w-7xl mx-auto">
               <button
                 onClick={closeGallery}
-                className={`absolute top-6 sm:top-4 lg:top-6 right-4 lg:right-6 text-white bg-slate-800/40 hover:bg-slate-800/60 rounded-full p-3 sm:p-2 lg:p-3 z-50 transition-opacity duration-300 ${controlsVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                className={`absolute top-4 sm:top-6 lg:top-8 right-4 sm:right-6 lg:right-8 text-white bg-slate-800/40 hover:bg-slate-800/60 rounded-full p-2 sm:p-2.5 lg:p-3 z-50 transition-opacity duration-300 ${controlsVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                 aria-label="Close gallery"
               >
                 ✕
@@ -224,7 +224,7 @@ const Works = () => {
 
               <button
                 onClick={showPrev}
-                className={`absolute left-3 sm:left-6 lg:left-10 top-1/2 -translate-y-1/2 text-white bg-slate-800/40 hover:bg-slate-800/60 rounded-full p-4 sm:p-3 lg:p-5 z-40 transition-opacity duration-300 ${controlsVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                className={`absolute left-3 sm:left-6 lg:left-10 top-1/2 -translate-y-1/2 text-white bg-slate-800/40 hover:bg-slate-800/60 rounded-full p-3 sm:p-4 lg:p-5 z-40 transition-opacity duration-300 ${controlsVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                 aria-label="Previous image"
               >
                 ‹
@@ -254,7 +254,7 @@ const Works = () => {
 
               <button
                 onClick={showNext}
-                className={`absolute right-3 sm:right-6 lg:right-10 top-1/2 -translate-y-1/2 text-white bg-slate-800/40 hover:bg-slate-800/60 rounded-full p-4 sm:p-3 lg:p-5 z-40 transition-opacity duration-300 ${controlsVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                className={`absolute right-3 sm:right-6 lg:right-10 top-1/2 -translate-y-1/2 text-white bg-slate-800/40 hover:bg-slate-800/60 rounded-full p-3 sm:p-4 lg:p-5 z-40 transition-opacity duration-300 ${controlsVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
                 aria-label="Next image"
               >
                 ›
