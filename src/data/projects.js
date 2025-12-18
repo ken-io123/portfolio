@@ -6,6 +6,8 @@ import ecomImg2 from '@/assets/images/pic2.png';
 // Put the files at `src/assets/images/pic1.1.png` and `src/assets/images/pic1.2.png`
 import brandImg1 from '@/assets/images/pic1.1.png';
 import brandImg2 from '@/assets/images/pic1.2.png';
+import brandImg3 from '@/assets/images/pic1.3.png';
+import brandImg4 from '@/assets/images/pic1.4.png';
 
 export const projects = [
   {
@@ -34,13 +36,14 @@ export const projects = [
   },
   {
     id: 3,
-    title: 'Mobile App UI/UX',
-    category: 'UI/UX Design',
+    title: 'Adaptive E-Learning',
+    category: 'Adaptive AI System',
     description:
-      'Intuitive mobile application design focused on user experience and modern interface patterns.',
-    image:
-      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80',
-    tags: ['Figma', 'UI/UX', 'Mobile'],
+      'An AI-driven web app using facial recognition to monitor student emotions and adapt learning paths in real-time.',
+    // Use local assets: primary pic1.4 then pic1.3 in the gallery
+    image: brandImg4,
+    images: [brandImg4, brandImg3],
+    tags: ['HTML5', 'CSS3', 'JavaScript'],
     link: '#',
   },
   // Removed three portfolio items (Editorial Illustration, Corporate Website, Social Media Campaign)
