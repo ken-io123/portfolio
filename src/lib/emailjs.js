@@ -24,7 +24,6 @@ export const initEmailJS = () => {
   
   try {
     emailjs.init(PUBLIC_KEY);
-    console.log('✅ EmailJS initialized successfully');
   } catch (error) {
     console.error('❌ EmailJS initialization failed:', error);
   }
@@ -63,8 +62,6 @@ export const sendEmail = async formData => {
       templateParams,
       PUBLIC_KEY
     );
-    
-    console.log('✅ Email sent successfully:', response);
     return response;
   } catch (error) {
     console.error('❌ Email send error:', error);

@@ -135,7 +135,7 @@ const Contact = () => {
                     ? 'border-red-500 focus:ring-red-500'
                     : 'border-slate-300 dark:border-slate-600'
                 )}
-                placeholder="your.email@example.com"
+                placeholder="your@gmail.com"
               />
               {errors.email && (
                 <p className="mt-1 text-sm text-red-500">{errors.email}</p>
