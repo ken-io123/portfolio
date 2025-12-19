@@ -1,5 +1,9 @@
 ﻿User-agent: *
 Allow: /
 
+<<<<<<< Updated upstream
 # Add sitemap URL once generated
 # Sitemap: https://kenrickmesana.netlify.app/sitemap.xml
+=======
+Sitemap: https://kenrickmesana.netlify.app/sitemap.xml
+>>>>>>> Stashed changes
