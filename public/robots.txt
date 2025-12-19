@@ -1,4 +1,5 @@
 ﻿User-agent: *
 Allow: /
 
-Sitemap: https://yourportfolio.com/sitemap.xml
+# Add sitemap URL once generated
+# Sitemap: https://kenrickmesana.netlify.app/sitemap.xml
