@@ -34,8 +34,9 @@ const Footer = () => {
               </h3>
               <p className="text-muted text-sm max-w-sm mx-auto sm:mx-0">
                 IT student specializing in web and software development. I
-                design and build responsive websites and systems that deliver
-                reliable, accessible, and user‑friendly solutions.
+                combine academic knowledge with practical expertise to build
+                responsive websites and robust systems that solve real-world
+                problems.
               </p>
             </div>
 

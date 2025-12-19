@@ -235,8 +235,12 @@ const Navbar = () => {
           {/* Right Actions */}
           <div className="flex items-center gap-4">
             <ThemeToggle />
-            <Button variant="primary" className="hidden md:inline-flex">
-              Sign up
+            <Button
+              variant="primary"
+              className="hidden md:inline-flex"
+              onClick={e => handleNavClick(e, '#contact', 'contact')}
+            >
+              Start a Project
             </Button>
 
             {/* Mobile Menu Button */}
@@ -287,8 +291,12 @@ const Navbar = () => {
                     </div>
                   </motion.a>
                 ))}
-                <Button variant="primary" className="w-full">
-                  Sign up
+                <Button
+                  variant="primary"
+                  className="w-full"
+                  onClick={e => handleNavClick(e, '#contact', 'contact')}
+                >
+                  Start a Project
                 </Button>
               </div>
             </Container>

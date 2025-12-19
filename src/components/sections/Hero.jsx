@@ -35,7 +35,7 @@ const Hero = () => {
 
   const formatCount = (value, stat) => {
     if (stat.id === 1) return `${value}+`;
-    if (stat.id === 2) return `${value}`;
+    if (stat.id === 2) return `${value}+`;
     if (stat.id === 3) return `${value}%`;
     return value;
   };
@@ -170,9 +170,9 @@ const Hero = () => {
               variants={fadeInUp}
               className="text-base md:text-lg text-muted mb-6 md:mb-8 max-w-xl"
             >
-              IT student specializing in web and software development. I design
-              and build responsive websites and systems that deliver reliable,
-              accessible, and user‑friendly solutions.
+              IT student specializing in web and software development. I combine
+              academic knowledge with practical expertise to build responsive
+              websites and robust systems that solve real-world problems.
             </motion.p>
 
             {/* CTA Buttons */}

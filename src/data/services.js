@@ -4,25 +4,25 @@ export const services = [
   {
     id: 1,
     icon: Palette,
-    title: 'Web Designer',
+    title: 'Web Design',
     description:
-      'Building responsive and modern websites using cutting-edge technologies. Specializing in creating user-friendly interfaces that deliver exceptional digital experiences.',
+      'Crafting visually stunning and responsive interfaces. I focus on user-centric designs that ensure a seamless and engaging digital experience across all devices.',
     color: 'violet',
   },
   {
     id: 2,
     icon: Code,
-    title: 'Web Developer',
+    title: 'Web Development',
     description:
-      'Developing robust and scalable system solutions tailored to your business needs. From backend architecture to full-stack applications that streamline operations.',
+      'Building high-performance websites using modern frameworks. From clean front-end layouts to robust back-end logic, I develop sites that are fast, secure, and scalable.',
     color: 'violet',
   },
   {
     id: 3,
     icon: Database,
-    title: 'Software Developer',
+    title: 'Software Development',
     description:
-      'Developing custom software solutions and scalable applications tailored to unique business requirements.',
+      'Creating custom software solutions to automate and streamline your workflows. I specialize in developing reliable applications tailored to meet specific business requirements.',
     color: 'violet',
   },
 ];

@@ -124,8 +124,8 @@ const Works = () => {
     >
       <Container>
         <SectionHeading
-          title="Featured Projects"
-          subtitle="A showcase of creative projects that blend design excellence with innovative solutions"
+          title="My Projects"
+          subtitle="Bringing ideas to life through functional, user-centric applications and robust system development."
         />
 
         <motion.div
