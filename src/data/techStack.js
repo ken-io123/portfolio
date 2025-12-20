@@ -38,6 +38,7 @@ export const techStack = [
       { name: 'GitHub Copilot' },
       { name: 'Figma' },
       { name: 'Canva' },
+      { name: 'JetBrains' },
       { name: 'Vite' },
     ],
   },
