@@ -1,9 +1,9 @@
 import emailjs from '@emailjs/browser';
 
-// EmailJS Configuration - using Vite environment variables
-const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'portfolio_gmail';
-const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_jynaeni';
-const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '9y2QENhk6CGkydPLO';
+// EmailJS Configuration - require values from Vite env variables
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 export const EMAILJS_CONFIG = {
   SERVICE_ID,
@@ -15,13 +15,14 @@ export const EMAILJS_CONFIG = {
  * Initialize EmailJS (call once at app startup)
  */
 export const initEmailJS = () => {
-  if (!PUBLIC_KEY || PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
+  if (!PUBLIC_KEY) {
+    // Don't log sensitive values; provide actionable instruction instead
     console.warn(
-      '⚠️ EmailJS public key not configured. Add VITE_EMAILJS_PUBLIC_KEY to .env file.'
+      '⚠️ EmailJS public key not configured. Set VITE_EMAILJS_PUBLIC_KEY in your environment.'
     );
     return;
   }
-  
+
   try {
     emailjs.init(PUBLIC_KEY);
   } catch (error) {
@@ -35,17 +36,10 @@ export const initEmailJS = () => {
  * @returns {Promise} EmailJS response
  */
 export const sendEmail = async formData => {
-  // Validate configuration
-  if (
-    !SERVICE_ID ||
-    SERVICE_ID === 'YOUR_SERVICE_ID' ||
-    !TEMPLATE_ID ||
-    TEMPLATE_ID === 'YOUR_TEMPLATE_ID' ||
-    !PUBLIC_KEY ||
-    PUBLIC_KEY === 'YOUR_PUBLIC_KEY'
-  ) {
+  // Validate configuration - fail fast with clear message
+  if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
     throw new Error(
-      'EmailJS not configured. Please add VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY to your .env file.'
+      'EmailJS not configured. Ensure VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID and VITE_EMAILJS_PUBLIC_KEY are set.'
     );
   }
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Code, Database, Palette } from 'lucide-react';
 import { stats } from '@/data/stats';
 import { Button, Container, Badge } from '@/components/ui';
@@ -8,10 +8,8 @@ import profileImg from '@/assets/images/profile.png';
 const Hero = () => {
   const [counts, setCounts] = useState({ 0: 0, 1: 0, 2: 0 });
 
-  // Detect if user prefers reduced motion
-  const prefersReducedMotion = window.matchMedia(
-    '(prefers-reduced-motion: reduce)'
-  ).matches;
+  // Respect user's reduced motion preference
+  const prefersReducedMotion = useReducedMotion();
 
   // Count-up animation effect
   useEffect(() => {
@@ -46,8 +44,8 @@ const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.1,
+        staggerChildren: prefersReducedMotion ? 0 : 0.15,
+        delayChildren: prefersReducedMotion ? 0 : 0.1,
       },
     },
   };
@@ -60,11 +58,9 @@ const Hero = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        type: 'spring',
-        damping: 20,
-        stiffness: 100,
-      },
+      transition: prefersReducedMotion
+        ? { duration: 0.001 }
+        : { type: 'spring', damping: 20, stiffness: 100 },
     },
   };
 
@@ -76,11 +72,9 @@ const Hero = () => {
     visible: {
       opacity: 1,
       x: 0,
-      transition: {
-        type: 'spring',
-        damping: 20,
-        stiffness: 100,
-      },
+      transition: prefersReducedMotion
+        ? { duration: 0.001 }
+        : { type: 'spring', damping: 20, stiffness: 100 },
     },
   };
 
@@ -92,11 +86,9 @@ const Hero = () => {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: {
-        type: 'spring',
-        damping: 15,
-        stiffness: 100,
-      },
+      transition: prefersReducedMotion
+        ? { duration: 0.001 }
+        : { type: 'spring', damping: 15, stiffness: 100 },
     },
   };
 
@@ -110,12 +102,14 @@ const Hero = () => {
       opacity: 1,
       scale: 1,
       y: 0,
-      transition: {
-        type: 'spring',
-        damping: 12,
-        stiffness: 150,
-        delay: prefersReducedMotion ? 0 : 0.8 + custom * 0.15,
-      },
+      transition: prefersReducedMotion
+        ? { duration: 0.001 }
+        : {
+            type: 'spring',
+            damping: 12,
+            stiffness: 150,
+            delay: 0.8 + custom * 0.15,
+          },
     }),
   };
 

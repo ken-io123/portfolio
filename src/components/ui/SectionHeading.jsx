@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { useAnimateOnScroll } from '@/hooks/useAnimateOnScroll';
 
@@ -12,6 +12,7 @@ const SectionHeading = ({
   ...props
 }) => {
   const { ref, inView } = useAnimateOnScroll({ threshold: 0.3 });
+  const prefersReducedMotion = useReducedMotion();
 
   const alignments = {
     left: 'text-left',
@@ -20,7 +21,7 @@ const SectionHeading = ({
   };
 
   const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 20 },
     visible: { opacity: 1, y: 0 },
   };
 

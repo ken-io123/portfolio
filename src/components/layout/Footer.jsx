@@ -88,7 +88,7 @@ const Footer = () => {
           {/* Bottom Section */}
           <div className="pt-8 border-t border-slate-200 dark:border-slate-700">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-muted text-sm">© 2025. All rights reserved.</p>
+              <p className="text-muted text-sm">© {currentYear}. All rights reserved.</p>
               <div className="flex gap-6 text-sm">
                 <a
                   href="#"

@@ -9,6 +9,8 @@ import logo from '@/assets/images/k-logo.png';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const toggleButtonRef = useRef(null);
+  const mobileMenuRef = useRef(null);
   const [activeId, setActiveId] = useState(null);
   const navLinksRef = useRef({});
   const navWrapperRef = useRef(null);
@@ -150,6 +152,38 @@ const Navbar = () => {
     };
   }, [activeId]);
 
+  // Manage focus when mobile menu opens/closes: focus first focusable and restore previous
+  useEffect(() => {
+    const menu = mobileMenuRef.current;
+    let previousActive = null;
+    if (isMobileMenuOpen) {
+      previousActive = document.activeElement;
+      // focus first focusable element inside menu after animate in
+      requestAnimationFrame(() => {
+        if (!menu) return;
+        const focusable = menu.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+        if (focusable && focusable.length) {
+          focusable[0].focus();
+        }
+      });
+
+      const onKey = e => {
+        if (e.key === 'Escape') {
+          setIsMobileMenuOpen(false);
+        }
+      };
+
+      window.addEventListener('keydown', onKey);
+
+      return () => window.removeEventListener('keydown', onKey);
+    } else {
+      // restore focus to toggle button when menu closes
+      if (toggleButtonRef.current) {
+        toggleButtonRef.current.focus();
+      }
+    }
+  }, [isMobileMenuOpen]);
+
   const handleNavClick = (e, href, id) => {
     e.preventDefault();
 
@@ -244,13 +278,16 @@ const Navbar = () => {
             </Button>
 
             {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-foreground transition-colors"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+                      <button
+                        ref={toggleButtonRef}
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        className="md:hidden p-2 text-foreground transition-colors"
+                        aria-label="Toggle menu"
+                        aria-controls="mobile-menu"
+                        aria-expanded={isMobileMenuOpen}
+                      >
+                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                      </button>
           </div>
         </div>
       </Container>
@@ -259,11 +296,35 @@ const Navbar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
+            id="mobile-menu"
+            ref={mobileMenuRef}
+            role="dialog"
+            aria-modal="true"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             className="md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700"
+            onKeyDown={e => {
+              // Basic focus trap: keep tabbing within the mobile menu
+              if (e.key !== 'Tab') return;
+              const node = mobileMenuRef.current;
+              if (!node) return;
+              const focusable = node.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+              if (!focusable || focusable.length === 0) return;
+              const first = focusable[0];
+              const last = focusable[focusable.length - 1];
+
+              if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+              }
+
+              if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+              }
+            }}
           >
             <Container>
               <div className="py-6 space-y-2">
