@@ -46,7 +46,7 @@ const Footer = () => {
               <h4 className="text-lg font-semibold text-foreground mb-4">
                 Quick Links
               </h4>
-              <ul className="flex flex-col items-start space-y-2">
+              <ul className="flex flex-row flex-wrap justify-center gap-x-6 gap-y-2 lg:flex-col lg:items-start lg:space-y-2 lg:gap-0">
                 {navLinks.map(link => (
                   <li key={link.id}>
                     <a
