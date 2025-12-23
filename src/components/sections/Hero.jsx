@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Code, Database, Palette } from 'lucide-react';
 import { stats } from '@/data/stats';
@@ -145,7 +145,7 @@ const Hero = () => {
       className="min-h-screen flex items-center hero-gradient pt-20 overflow-hidden"
     >
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center py-8 md:py-12">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 xl:gap-12 items-center py-8 md:py-12">
           {/* Left Content */}
           <motion.div
             variants={containerVariants}
@@ -172,7 +172,7 @@ const Hero = () => {
             {/* CTA Buttons */}
             <motion.div
               variants={fadeInUp}
-              className="flex flex-wrap gap-4 mb-12"
+              className="flex flex-row flex-wrap gap-4 mb-12"
             >
               <Button
                 variant="primary"
@@ -194,7 +194,7 @@ const Hero = () => {
             {/* Stats */}
             <motion.div
               variants={fadeInUp}
-              className="grid grid-cols-2 min-[360px]:grid-cols-3 gap-3 sm:gap-4 md:gap-8"
+              className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8"
             >
               {stats.map((stat, index) => (
                 <motion.div
@@ -226,7 +226,7 @@ const Hero = () => {
             animate="visible"
             className="relative"
           >
-            <div className="relative max-w-md mx-auto px-8 md:px-0">
+            <div className="relative max-w-md mx-auto px-12 md:px-8 lg:px-0">
               {/* Profile Image */}
               <motion.div
                 variants={scaleIn}
@@ -239,10 +239,12 @@ const Hero = () => {
                   src={profileImg}
                   alt="Profile"
                   className="w-full h-auto rounded-3xl"
+                  loading="lazy"
+                  decoding="async"
                 />
               </motion.div>
 
-              {/* Floating Badges */}
+              {/* Floating Badges - Smooth Framer Motion animations */}
               {floatingBadges.map((badge, index) => (
                 <motion.div
                   key={badge.id}
@@ -282,4 +284,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default React.memo(Hero);

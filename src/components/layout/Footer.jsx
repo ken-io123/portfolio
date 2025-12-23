@@ -1,3 +1,4 @@
+import React from 'react';
 import { navLinks } from '@/data/navLinks';
 import { socialLinks } from '@/data/socialLinks';
 import { Container } from '@/components/ui';
@@ -26,13 +27,13 @@ const Footer = () => {
       <Container>
         <div className="py-8 md:py-12">
           {/* Top Section */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 mb-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 mb-8 items-start">
             {/* Brand */}
-            <div className="text-center sm:text-left">
+            <div className="text-center lg:text-left">
               <h3 className="text-2xl font-bold text-foreground mb-4">
                 KENRICK.
               </h3>
-              <p className="text-muted text-sm max-w-sm mx-auto sm:mx-0">
+              <p className="text-muted text-sm sm:text-base max-w-xs sm:max-w-sm md:max-w-md lg:max-w-full mx-auto lg:mx-0">
                 IT student specializing in web and software development. I
                 combine academic knowledge with practical expertise to build
                 responsive websites and robust systems that solve real-world
@@ -41,11 +42,11 @@ const Footer = () => {
             </div>
 
             {/* Quick Links */}
-            <div className="text-center md:text-left md:ml-20 lg:ml-32">
+            <div className="flex flex-col items-center">
               <h4 className="text-lg font-semibold text-foreground mb-4">
                 Quick Links
               </h4>
-              <ul className="flex flex-wrap justify-center gap-4 md:block md:space-y-2">
+              <ul className="flex flex-col items-start space-y-2">
                 {navLinks.map(link => (
                   <li key={link.id}>
                     <a
@@ -61,11 +62,11 @@ const Footer = () => {
             </div>
 
             {/* Social Links */}
-            <div className="text-center md:text-right">
-              <h4 className="text-lg font-semibold text-foreground mb-4 text-center md:text-right">
+            <div className="text-center lg:text-right">
+              <h4 className="text-lg font-semibold text-foreground mb-4 text-center lg:text-right">
                 Connect
               </h4>
-              <div className="flex justify-center md:justify-end gap-4">
+              <div className="flex justify-center lg:justify-end gap-4">
                 {socialLinks.map(social => {
                   const Icon = social.icon;
                   return (
@@ -87,7 +88,7 @@ const Footer = () => {
 
           {/* Bottom Section */}
           <div className="pt-8 border-t border-slate-200 dark:border-slate-700">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
               <p className="text-muted text-sm">© {currentYear}. All rights reserved.</p>
               <div className="flex gap-6 text-sm">
                 <a
@@ -111,4 +112,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default React.memo(Footer);

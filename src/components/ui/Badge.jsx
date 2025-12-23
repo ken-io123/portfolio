@@ -1,3 +1,4 @@
+import React, { useMemo } from 'react';
 import { cn } from '@/lib/utils';
 
 const Badge = ({
@@ -22,16 +23,16 @@ const Badge = ({
   return (
     <div
       className={cn(
-        'px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium flex items-center gap-2 w-fit backdrop-blur-sm',
+        'px-2.5 py-1.5 sm:px-3 sm:py-1.5 md:px-4 md:py-2 rounded-full text-xs sm:text-sm font-medium flex items-center gap-1.5 sm:gap-2 w-fit backdrop-blur-sm',
         colorVariants[color],
         className
       )}
       {...props}
     >
-      {Icon && <Icon size={18} className="text-current" />}
+      {Icon && <Icon size={16} className="sm:w-[18px] sm:h-[18px] text-current" />}
       {children}
     </div>
   );
 };
 
-export default Badge;
+export default React.memo(Badge);

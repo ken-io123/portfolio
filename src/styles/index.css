@@ -38,8 +38,9 @@
     @apply scroll-smooth;
   }
 
-  /* Smooth transitions for theme changes */
-  * {
+  /* Smooth transitions for theme changes - OPTIMIZED: only specific elements */
+  body,
+  .transition-theme {
     transition:
       background-color 0.2s,
       color 0.2s,
@@ -98,6 +99,40 @@
   .floating-badge {
     @apply absolute px-4 py-2 bg-white dark:bg-slate-800 rounded-full shadow-lg;
     @apply flex items-center gap-2 text-sm font-medium;
+  }
+
+  /* Performance-optimized CSS floating animation */
+  @keyframes float-up-down {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float-up-down 3s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .animate-float-delay-1 {
+    animation: float-up-down 3s ease-in-out infinite 0.3s;
+    will-change: transform;
+  }
+
+  .animate-float-delay-2 {
+    animation: float-up-down 3s ease-in-out infinite 0.6s;
+    will-change: transform;
+  }
+
+  /* Pause animations when not in viewport or reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-float-delay-1,
+    .animate-float-delay-2 {
+      animation: none;
+    }
   }
 
   /* Landscape orientation handling for mobile */

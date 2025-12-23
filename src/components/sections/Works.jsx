@@ -158,7 +158,10 @@ const Works = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 scale-[1.12] group-hover:scale-[1.20]"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 will-change-transform"
+                    loading="lazy"
+                    decoding="async"
+                    style={{ transform: 'translateZ(0)' }}
                   />
                   {/* Overlay on Hover - open gallery modal */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-100 transition-opacity duration-300 flex items-end p-6">
@@ -248,6 +251,8 @@ const Works = () => {
                     src={galleryImages[currentIndex]}
                     alt={`Gallery ${currentIndex + 1}`}
                     className="w-full max-h-[75vh] md:max-h-[85vh] lg:max-h-[92vh] object-contain rounded-md shadow-lg"
+                    loading="lazy"
+                    decoding="async"
                   />
                 )}
               </div>

@@ -155,9 +155,9 @@ const Contact = () => {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                rows={6}
+                rows={4}
                 className={cn(
-                  'w-full px-4 py-3 rounded-lg border bg-white dark:bg-slate-800 text-foreground resize-none',
+                  'w-full px-4 py-3 rounded-lg border bg-white dark:bg-slate-800 text-foreground resize-none sm:rows-6',
                   'focus:outline-none focus:ring-2 focus:ring-primary transition-colors',
                   errors.message
                     ? 'border-red-500 focus:ring-red-500'

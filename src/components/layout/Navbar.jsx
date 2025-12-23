@@ -65,7 +65,7 @@ const Navbar = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Update animated indicator position (desktop)
+  // Update animated indicator position (desktop) - OPTIMIZED
   useEffect(() => {
     const updateIndicator = () => {
       const wrapper = navWrapperRef.current;
@@ -88,32 +88,40 @@ const Navbar = () => {
     updateIndicator();
     const id = setTimeout(updateIndicator, 120);
 
-    const onResize = () => updateIndicator();
+    // OPTIMIZED: Debounced resize handler (250ms)
+    let resizeTimer;
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateIndicator, 250);
+    };
+    
     window.addEventListener('resize', onResize);
 
     return () => {
       clearTimeout(id);
+      clearTimeout(resizeTimer);
       window.removeEventListener('resize', onResize);
     };
   }, [activeId]);
 
-  // Fallback / complement: update active link based on nearest section to top
+  // Fallback / complement: update active link based on nearest section to top - OPTIMIZED
   useEffect(() => {
     const offset = 88; // should match navbar height used in scroll calculations
     let ticking = false;
 
-    const updateActive = () => {
-      const sections = navLinks
-        .map(l => ({ id: l.id, el: document.querySelector(l.href) }))
-        .filter(s => s.el);
+    // OPTIMIZED: Memoize sections array
+    const sectionsCache = navLinks
+      .map(l => ({ id: l.id, el: document.querySelector(l.href) }))
+      .filter(s => s.el);
 
-      if (!sections.length) return;
+    const updateActive = () => {
+      if (!sectionsCache.length) return;
 
       const viewportTop = offset;
       let closest = null;
       let closestDistance = Infinity;
 
-      sections.forEach(s => {
+      sectionsCache.forEach(s => {
         const rect = s.el.getBoundingClientRect();
         // distance from element top to navbar bottom (viewportTop)
         const distance = Math.abs(rect.top - viewportTop);
@@ -140,13 +148,21 @@ const Navbar = () => {
       }
     };
 
+    // OPTIMIZED: Single consolidated resize handler with debounce
+    let resizeTimer;
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(updateActive, 250);
+    };
+
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
+    window.addEventListener('resize', onResize);
 
     // init
     updateActive();
 
     return () => {
+      clearTimeout(resizeTimer);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
     };
@@ -223,14 +239,14 @@ const Navbar = () => {
             <img
               src={logo}
               alt="Kenrick logo"
-              className="translate-x-0 sm:-translate-x-1 md:-translate-x-2 lg:-translate-x-3 h-16 md:h-20 lg:h-24 w-auto object-contain"
+              className="h-16 md:h-20 lg:h-24 w-auto object-contain"
               loading="lazy"
               decoding="async"
             />
           </a>
 
           {/* Desktop Navigation */}
-          <div ref={navWrapperRef} className="hidden md:flex items-center gap-8 relative">
+          <div ref={navWrapperRef} className="hidden xl:flex items-center gap-8 relative">
             {navLinks.map(link => (
               <a
                 key={link.id}
@@ -271,7 +287,7 @@ const Navbar = () => {
             <ThemeToggle />
             <Button
               variant="primary"
-              className="hidden md:inline-flex"
+              className="hidden xl:inline-flex"
               onClick={e => handleNavClick(e, '#contact', 'contact')}
             >
               Start a Project
@@ -281,7 +297,7 @@ const Navbar = () => {
                       <button
                         ref={toggleButtonRef}
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        className="md:hidden p-2 text-foreground transition-colors"
+                        className="xl:hidden p-2 text-foreground transition-colors"
                         aria-label="Toggle menu"
                         aria-controls="mobile-menu"
                         aria-expanded={isMobileMenuOpen}
@@ -304,7 +320,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700"
+            className="xl:hidden bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700"
             onKeyDown={e => {
               // Basic focus trap: keep tabbing within the mobile menu
               if (e.key !== 'Tab') return;
@@ -334,7 +350,7 @@ const Navbar = () => {
                     href={link.href}
                     onClick={e => handleNavClick(e, link.href, link.id)}
                     className={cn(
-                        'block py-3 transition-colors font-medium text-lg text-foreground'
+                        'block py-3 transition-colors font-medium text-base sm:text-lg text-foreground'
                       )}
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}

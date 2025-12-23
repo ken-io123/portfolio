@@ -9,7 +9,7 @@ const ThemeToggle = ({ className }) => {
     return (
       <button
         className={cn(
-          'p-2.5 sm:p-2 rounded-lg bg-slate-200 dark:bg-slate-700',
+          'p-1.5 sm:p-2 rounded-lg bg-slate-200 dark:bg-slate-700',
           className
         )}
         disabled

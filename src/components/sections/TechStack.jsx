@@ -87,7 +87,7 @@ const TechStack = () => {
                           className={cn(
                             'flex items-center justify-center',
                             'px-3 py-2 lg:px-4 lg:py-2.5',
-                            'text-sm lg:text-base font-medium',
+                            'text-xs sm:text-sm lg:text-base font-medium',
                             'rounded-full',
                             'bg-violet-100 text-violet-700 border border-violet-200',
                             'dark:bg-violet-900/30 dark:text-violet-200 dark:border-violet-500/30',
