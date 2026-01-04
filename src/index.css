@@ -14,6 +14,8 @@
   /* Card shadow tokens used by project cards */
   --card-top-shadow: rgba(0,0,0,0.22);
   --card-grid-color: rgba(0,0,0,0.06);
+
+
 }
 
 .dark {
@@ -24,6 +26,8 @@
   --color-border: 51 65 85; /* slate-700 */
   --card-top-shadow: rgba(255,255,255,0.10);
   --card-grid-color: rgba(255,255,255,0.04);
+
+
 }
 
 /* Base Styles */
@@ -80,6 +84,31 @@
   .floating-badge {
     @apply absolute px-4 py-2 bg-white dark:bg-slate-800 rounded-full shadow-lg;
     @apply flex items-center gap-2 text-sm font-medium;
+  }
+
+  /* Profile image wrapper with soft backlight glow */
+  .profile-shadow-wrap {
+    @apply relative;
+    isolation: isolate;
+  }
+
+  /* Soft glow behind the profile */
+  .profile-shadow-wrap::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 45%;
+    background: radial-gradient(ellipse at center, rgb(var(--color-primary) / 0.0), transparent 70%);
+    filter: blur(50px);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .dark .profile-shadow-wrap::before {
+    background: radial-gradient(ellipse at center, rgb(var(--color-primary) / 0.0), transparent 70%);
   }
 }
 

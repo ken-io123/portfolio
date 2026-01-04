@@ -32,6 +32,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <!-- Prevent theme flash: Apply dark mode immediately for new visitors -->
+    <script>
+      (function() {
+        const stored = localStorage.getItem('theme');
+        // Default to dark mode if no preference stored
+        if (!stored || stored === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

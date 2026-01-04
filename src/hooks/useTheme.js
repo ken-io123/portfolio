@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 
 // Helper to get initial theme value
+// Default to dark mode for new visitors
 const getInitialTheme = () => {
-  if (typeof window === 'undefined') return false;
+  if (typeof window === 'undefined') return true;
   const stored = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  return stored === 'dark' || (!stored && prefersDark);
+  // If no stored preference, default to dark mode
+  if (!stored) return true;
+  return stored === 'dark';
 };
 
 export const useTheme = () => {

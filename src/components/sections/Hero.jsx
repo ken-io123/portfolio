@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { Code, Database, Palette } from 'lucide-react';
+import { Code, Database, Palette, Clock, Trophy, Star } from 'lucide-react';
 import { stats } from '@/data/stats';
 import { Button, Container, Badge } from '@/components/ui';
 import profileImg from '@/assets/images/profile.png';
@@ -160,9 +160,18 @@ const Hero = () => {
               <br />I am Kenrick.
             </motion.h1>
 
+            {/* Subtitle - Only visible on mobile (replaces hidden badges) */}
             <motion.p
               variants={fadeInUp}
-              className="text-base md:text-lg text-muted mb-6 md:mb-8 max-w-xl"
+              className="block md:hidden text-base text-muted mb-4 font-medium"
+            >
+              Web Designer • Web Developer • Software Developer
+            </motion.p>
+
+            {/* Desktop Description - Full version */}
+            <motion.p
+              variants={fadeInUp}
+              className="hidden md:block text-base md:text-lg text-muted mb-6 md:mb-8 max-w-xl"
             >
               IT student specializing in web and software development. I combine
               academic knowledge with practical expertise to build responsive
@@ -196,26 +205,33 @@ const Hero = () => {
               variants={fadeInUp}
               className="grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8"
             >
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.id}
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    type: 'spring',
-                    damping: 15,
-                    stiffness: 100,
-                    delay: 0.6 + index * 0.1,
-                  }}
-                >
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-1">
-                    {formatCount(counts[index], stat)}
-                  </div>
-                  <div className="text-xs sm:text-sm text-muted">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
+              {stats.map((stat, index) => {
+                const Icon = { Clock, Trophy, Star }[stat.icon];
+                return (
+                  <motion.div
+                    key={stat.id}
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{
+                      type: 'spring',
+                      damping: 15,
+                      stiffness: 100,
+                      delay: 0.6 + index * 0.1,
+                    }}
+                    className="flex flex-col items-start"
+                  >
+                    {Icon && (
+                      <Icon className="w-5 h-5 md:w-6 md:h-6 text-foreground dark:text-white mb-2 opacity-90" />
+                    )}
+                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-1">
+                      {formatCount(counts[index], stat)}
+                    </div>
+                    <div className="text-xs sm:text-sm text-muted">
+                      {stat.label}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </motion.div>
 
@@ -233,18 +249,20 @@ const Hero = () => {
                 initial="hidden"
                 animate="visible"
                 transition={{ delay: 0.3 }}
-                className="relative z-10"
+                className="relative z-10 profile-shadow-wrap"
               >
                 <img
                   src={profileImg}
                   alt="Profile"
-                  className="w-full h-auto rounded-3xl"
+                  className="w-full h-auto rounded-3xl relative z-10 [mask-image:linear-gradient(to_bottom,black_50%,transparent_90%)] [-webkit-mask-image:linear-gradient(to_bottom,black_50%,transparent_90%)]"
                   loading="lazy"
                   decoding="async"
                 />
               </motion.div>
 
-              {/* Floating Badges - Smooth Framer Motion animations */}
+              {/* Mobile Badges - Hidden on all views (badges only appear as floating on desktop) */}
+
+              {/* Floating Badges - Hidden on mobile, visible on md+ (tablet/desktop) */}
               {floatingBadges.map((badge, index) => (
                 <motion.div
                   key={badge.id}
@@ -252,7 +270,7 @@ const Hero = () => {
                   variants={badgeVariants}
                   initial="hidden"
                   animate="visible"
-                  className={`absolute ${badge.position} z-20`}
+                  className={`hidden md:block absolute ${badge.position} z-20`}
                   whileHover={{
                     scale: 1.1,
                     y: -5,
